@@ -2,6 +2,8 @@ ProjectTitle: Project-name
 
 PageList:
 - file: homepage.html
-  ready: 100
+  ready: 20
 - file: page.html
   ready: 0
+- file: styleguide.html
+  ready: 20

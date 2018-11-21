@@ -2,21 +2,54 @@
 header.header
   .container
     .header__wrapper
-      a(href="#").header__logo
-        +svgMono('email')
-      ul.header__menu
-        - var list = ["Homepage", "Shop", "Blog", "Lorem"]
-          each item in list
-            li
-              a.header__menu-link(href="#")=item
-      
-      .header__cta
-        .header__cart
-          +svgMono('email')
-      
+      .header__logo-container
+        a(href="#").header__logo
+          +svgMono('logo')
+        a(href="#").header__logo-info Учебный центр
+      .header__menu
+        a.header__menu-item
+          .header__menu-icon
+            +svgMono('star')
+          | 95
+        a.header__menu-item
+          .header__menu-icon
+            +svgMono('star')
+          | 3
+        a.header__menu-item
+          .header__menu-icon
+            +svgMono('star')
+          | 2
+        a.header__menu-item
+          .header__menu-icon
+            +svgMono('star')
+          | 3
+        a.header__menu-item
+          .header__menu-icon
+            +svgMono('star')
+          | 3
+
+      .header__user
+        a.header__user-image(href="#")
+          img(src="img/user.png", alt="")
+        a.header__user-logout(href="#") Выход
+        
       .header__hamburger
         .hamburger.hamburger--squeeze(js-hamburger)
           .hamburger-box
             .hamburger-inner
+
+  .header__nav
+    .container
+      .header__nav-wrapper
+        .header__nav-list
+          a.header__nav-item(href="#") Обучение
+          a.header__nav-item(href="#") Форум
+          a.header__nav-item(href="#") Конкурсы
+          a.header__nav-item(href="#") Акции
+          a.header__nav-item(href="#") Магазин
+          a.header__nav-item(href="#") Помощь
+        a.header__nav-lang(href="#")
+          img(src="img/flag.jpg", alt="")
+      
         
 // HEADER :: END
