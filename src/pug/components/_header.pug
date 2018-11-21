@@ -13,19 +13,19 @@ header.header
           | 95
         a.header__menu-item
           .header__menu-icon
-            +svgMono('star')
+            +svgMono('mail')
           | 3
         a.header__menu-item
           .header__menu-icon
-            +svgMono('star')
+            +svgMono('like')
           | 2
         a.header__menu-item
           .header__menu-icon
-            +svgMono('star')
+            +svgMono('courses')
           | 3
         a.header__menu-item
           .header__menu-icon
-            +svgMono('star')
+            +svgMono('tests')
           | 3
 
       .header__user
@@ -41,13 +41,19 @@ header.header
   .header__nav
     .container
       .header__nav-wrapper
-        .header__nav-list
-          a.header__nav-item(href="#") Обучение
-          a.header__nav-item(href="#") Форум
-          a.header__nav-item(href="#") Конкурсы
-          a.header__nav-item(href="#") Акции
-          a.header__nav-item(href="#") Магазин
-          a.header__nav-item(href="#") Помощь
+        ul.header__nav-list
+          li
+            a.header__nav-item(href="#") Обучение
+          li
+            a.header__nav-item(href="#") Форум
+          li
+            a.header__nav-item(href="#") Конкурсы
+          li
+            a.header__nav-item(href="#") Акции
+          li
+            a.header__nav-item(href="#") Магазин
+          li
+            a.header__nav-item(href="#") Помощь
         a.header__nav-lang(href="#")
           img(src="img/flag.jpg", alt="")
       

@@ -5,5 +5,38 @@ bodyClass: homepage
 extends shared/_layout
 block content
 
-  section.wow
-    
+  section.firstscreen.wow
+    .container
+      .firstscreen__grid
+        .firstscreen__sidebar
+          .firstscreen__sidebar-content
+            .firstscreen__head
+              .firstscreen__image
+                img(src="img/user.png", alt="")
+              p.firstscreen__name Екатерина Николаева
+            ul.firstscreen__menu
+              li
+                a.firstscreen__item
+                  .header__menu-icon
+                    +svgMono('star')
+                  span Баллы — 90
+              li
+                a.firstscreen__item
+                  .header__menu-icon
+                    +svgMono('star')
+                  span Собщения — 3
+              li
+                a.firstscreen__item
+                  .header__menu-icon
+                    +svgMono('star')
+                  span Поощрения — 2
+              li
+                a.firstscreen__item
+                  .header__menu-icon
+                    +svgMono('star')
+                  span Незавершенные курсы — 3
+              li
+                a.firstscreen__item
+                  .header__menu-icon
+                    +svgMono('star')
+                  span Незавершенные тесты — 3
