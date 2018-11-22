@@ -5,6 +5,7 @@ bodyClass: homepage
 extends shared/_layout
 block content
 
+  // BEGIN SECTION :: FIRSTSCREEN
   section.firstscreen.wow
     .container
       .firstscreen__grid
@@ -46,3 +47,47 @@ block content
             p.firstscreen__desc отвечая на вопросы, проходя тесты и общаясь на форуме ты можешь получить баллы, на которые можно покупатьпризы в нашем магазине!
           .firstscreen__image-desktop
             img(src="img/main-desktop.png", alt="")
+
+  // END SECTION :: FIRSTSCREEN
+
+  // BEGIN SECTION :: NEWS
+  section.news.wow
+    .container
+      .news__head
+        p.news__title новости
+        a.news__more(href="#") Все новости
+      .news__slider(js-slider-news)
+        .swiper-wrapper
+          .news__item
+            a.news__item-container(href="#")
+              .news__item-head
+                p.news__item-date 10 мая 2018
+                p.news__item-info Корпорация Panasonic представила результаты 2018 финансового года(с 01.04.2017 по 31.03.2018)
+              .news__item-image
+                img(src="img/news-1.jpg", alt="")
+          .news__item
+            a.news__item-container(href="#")
+              .news__item-head
+                p.news__item-date 6 февраля 2018
+                p.news__item-info Японские технологические гиганты разработают аккумуляторы нового поколения.
+              .news__item-image
+                img(src="img/news-2.jpg", alt="")
+          .news__item
+            a.news__item-container(href="#")
+              .news__item-head
+                p.news__item-date 3 марта 2018
+                p.news__item-info Panasonic объявляет «Век инноваций»
+              .news__item-image
+                img(src="img/news-3.jpg", alt="")
+          .news__item
+            a.news__item-container(href="#")
+              .news__item-head
+                p.news__item-date 10 января 2018
+                p.news__item-info Корпорация Panasonic представила результаты 9 месяцев 2018 финансового года (с 01.04.2017 по 31.12.2017). Самый подробный Самый подробный Самый подробный Самый подробный
+              .news__item-image
+                .news__play
+                  .news__play-icon
+                    +svgMono('play')
+                img(src="img/news-4.jpg", alt="")
+
+  // END SECTION :: NEWS

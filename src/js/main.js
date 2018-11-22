@@ -1,5 +1,4 @@
-$(document).ready(function(){
-
+$(document).ready(function() {
   //////////
   // Global variables
   //////////
@@ -17,7 +16,7 @@ $(document).ready(function(){
   initHeaderScroll();
 
   // triggered when PJAX DONE
-  function pageReady(){
+  function pageReady() {
     updateHeaderActiveClass();
     closeMobileMenu();
 
@@ -40,23 +39,21 @@ $(document).ready(function(){
 
   // scroll/resize listener
   // _window.on('resize', throttle(revealFooter, 100));
-  _window.on('resize', debounce(setBreakpoint, 200))
+  _window.on("resize", debounce(setBreakpoint, 200));
 
   // this is a master function which should have all functionality
   pageReady();
 
-
   // some plugins work best with onload triggers
-  _window.on('load', function(){
+  _window.on("load", function() {
     // your functions
-  })
-
+  });
 
   //////////
   // COMMON
   //////////
 
-  function legacySupport(){
+  function legacySupport() {
     // svg support for laggy browsers
     svg4everybody();
 
@@ -68,52 +65,61 @@ $(document).ready(function(){
     });
   }
 
-
   // Prevent # behavior
-	_document
-    .on('click', '[href="#"]', function(e) {
+  _document
+    .on("click", '[href="#"]', function(e) {
       e.preventDefault();
     })
-    .on('click', '[js-link]', function(e){
-      var dataHref = $(this).data('href');
-      if (dataHref && dataHref !== "#"){
+    .on("click", "[js-link]", function(e) {
+      var dataHref = $(this).data("href");
+      if (dataHref && dataHref !== "#") {
         e.preventDefault();
         e.stopPropagation();
         Barba.Pjax.goTo(dataHref);
       }
     })
-    .on('click', 'a[href^="#section"]', function() { // section scroll
-      var el = $(this).attr('href');
-      $('body, html').animate({
-          scrollTop: $(el).offset().top}, 1000);
+    .on("click", 'a[href^="#section"]', function() {
+      // section scroll
+      var el = $(this).attr("href");
+      $("body, html").animate(
+        {
+          scrollTop: $(el).offset().top
+        },
+        1000
+      );
       return false;
-    })
-
+    });
 
   // HEADER SCROLL
   // add .header-static for .page or body
   // to disable sticky header
-  function initHeaderScroll(){
-    _window.on('scroll', throttle(function(e) {
-      var vScroll = _window.scrollTop();
-      var header = $('.header').not('.header--static');
-      var headerHeight = header.height();
-      var firstSection = _document.find('.page__content div:first-child()').height() - headerHeight;
-      var visibleWhen = Math.round(_document.height() / _window.height()) >  2.5
+  function initHeaderScroll() {
+    _window.on(
+      "scroll",
+      throttle(function(e) {
+        var vScroll = _window.scrollTop();
+        var header = $(".header").not(".header--static");
+        var headerHeight = header.height();
+        var firstSection =
+          _document.find(".page__content div:first-child()").height() -
+          headerHeight;
+        var visibleWhen =
+          Math.round(_document.height() / _window.height()) > 2.5;
 
-      if (visibleWhen){
-        if ( vScroll > headerHeight ){
-          header.addClass('is-fixed');
-        } else {
-          header.removeClass('is-fixed');
+        if (visibleWhen) {
+          if (vScroll > headerHeight) {
+            header.addClass("is-fixed");
+          } else {
+            header.removeClass("is-fixed");
+          }
+          if (vScroll > firstSection) {
+            header.addClass("is-fixed-visible");
+          } else {
+            header.removeClass("is-fixed-visible");
+          }
         }
-        if ( vScroll > firstSection ){
-          header.addClass('is-fixed-visible');
-        } else {
-          header.removeClass('is-fixed-visible');
-        }
-      }
-    }, 10));
+      }, 10)
+    );
   }
 
   ////////////////////
@@ -123,133 +129,143 @@ $(document).ready(function(){
   // this methods helps to prevent page-jumping on setting body height to 100%
   function disableScroll() {
     lastScroll = _window.scrollTop();
-    $('.page__content').css({
-      'margin-top': '-' + lastScroll + 'px'
+    $(".page__content").css({
+      "margin-top": "-" + lastScroll + "px"
     });
-    $('body').addClass('body-lock');
-    $('.footer').addClass('is-hidden'); // if you use revealFooter()
+    $("body").addClass("body-lock");
+    $(".footer").addClass("is-hidden"); // if you use revealFooter()
   }
 
   function enableScroll() {
-    $('.page__content').css({
-      'margin-top': '-' + 0 + 'px'
+    $(".page__content").css({
+      "margin-top": "-" + 0 + "px"
     });
-    $('body').removeClass('body-lock');
-    $('.footer').removeClass('is-hidden'); // if you use revealFooter()
-    _window.scrollTop(lastScroll)
+    $("body").removeClass("body-lock");
+    $(".footer").removeClass("is-hidden"); // if you use revealFooter()
+    _window.scrollTop(lastScroll);
     lastScroll = 0;
   }
 
   function blockScroll() {
-    if ($('[js-hamburger]').is('.is-active')) {
+    if ($("[js-hamburger]").is(".is-active")) {
       disableScroll();
     } else {
       enableScroll();
     }
-  };
+  }
 
-  _document.on('click', '[js-hamburger]', function(){
-    $(this).toggleClass('is-active');
-    $('.mobile-navi').toggleClass('is-active');
+  _document.on("click", "[js-hamburger]", function() {
+    $(this).toggleClass("is-active");
+    $(".header").toggleClass("is-open");
+
 
     blockScroll();
   });
 
-  _document.on('click', '[js-language-btn]', function(){
-    $('.header__language').removeClass('is-active');
-    $(this).addClass('is-active');
+  _document.on("click", "[js-language-btn]", function() {
+    $(".header__language").removeClass("is-active");
+    $(this).addClass("is-active");
   });
 
-  function closeMobileMenu(){
-    $('[js-hamburger]').removeClass('is-active');
-    $('.mobile-navi').removeClass('is-active');
+  function closeMobileMenu() {
+    $("[js-hamburger]").removeClass("is-active");
+    $(".mobile-navi").removeClass("is-active");
 
     blockScroll();
   }
 
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
-  function updateHeaderActiveClass(){
-    $('.header__menu li').each(function(i,val){
-      if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
-        $(val).addClass('is-active');
+  function updateHeaderActiveClass() {
+    $(".header__menu li").each(function(i, val) {
+      if (
+        $(val)
+          .find("a")
+          .attr("href") == window.location.pathname.split("/").pop()
+      ) {
+        $(val).addClass("is-active");
       } else {
-        $(val).removeClass('is-active')
+        $(val).removeClass("is-active");
       }
     });
   }
 
-
-
   /***************
-  * PAGE SPECIFIC *
-  ***************/
+   * PAGE SPECIFIC *
+   ***************/
 
-  _document
-    .on('click', '[js-inner-page-btn]', function(){
-
-    })
-
+  _document.on("click", "[js-inner-page-btn]", function() {});
 
   /**********
-  * PLUGINS *
-  **********/
-
+   * PLUGINS *
+   **********/
 
   //////////
   // SLIDERS
   //////////
-  function initSliders(){
-
+  function initSliders() {
     // EXAMPLE SWIPER
-    new Swiper('[js-slider]', {
+    // new Swiper('[js-slider]', {
+    //   wrapperClass: "swiper-wrapper",
+    //   slideClass: "example-slide",
+    //   direction: 'horizontal',
+    //   loop: false,
+    //   watchOverflow: true,
+    //   setWrapperSize: false,
+    //   spaceBetween: 0,
+    //   slidesPerView: 'auto',
+    //   // loop: true,
+    //   normalizeSlideIndex: true,
+    //   // centeredSlides: true,
+    //   freeMode: true,
+    //   // effect: 'fade',
+    //   autoplay: {
+    //     delay: 5000,
+    //   },
+    //   navigation: {
+    //     nextEl: '.example-next',
+    //     prevEl: '.example-prev',
+    //   },
+    //   breakpoints: {
+    //     // when window width is <= 992px
+    //     992: {
+    //       autoHeight: true
+    //     }
+    //   }
+    // })
+
+    new Swiper("[js-slider-news]", {
       wrapperClass: "swiper-wrapper",
-      slideClass: "example-slide",
-      direction: 'horizontal',
+      slideClass: "news__item",
+      direction: "horizontal",
       loop: false,
       watchOverflow: true,
       setWrapperSize: false,
       spaceBetween: 0,
-      slidesPerView: 'auto',
-      // loop: true,
+      slidesPerView: "auto",
       normalizeSlideIndex: true,
-      // centeredSlides: true,
-      freeMode: true,
-      // effect: 'fade',
-      autoplay: {
-        delay: 5000,
-      },
-      navigation: {
-        nextEl: '.example-next',
-        prevEl: '.example-prev',
-      },
-      breakpoints: {
-        // when window width is <= 992px
-        992: {
-          autoHeight: true
-        }
-      }
-    })
-
+      grabCursor: true,
+      freeMode: true
+    });
   }
 
   //////////
   // MODALS
   //////////
 
-  function initPopups(){
+  function initPopups() {
     // Magnific Popup
     var startWindowScroll = 0;
-    $('[js-popup]').magnificPopup({
-      type: 'inline',
+    $("[js-popup]").magnificPopup({
+      type: "inline",
       fixedContentPos: true,
       fixedBgPos: true,
-      overflowY: 'auto',
+      overflowY: "auto",
       closeBtnInside: true,
       preloader: false,
       midClick: true,
       removalDelay: 300,
-      mainClass: 'popup-buble',
+      mainClass: "popup-buble",
       callbacks: {
         beforeOpen: function() {
           startWindowScroll = _window.scrollTop();
@@ -262,23 +278,23 @@ $(document).ready(function(){
       }
     });
 
-    $('[js-popup-gallery]').magnificPopup({
-  		delegate: 'a',
-  		type: 'image',
-  		tLoading: 'Загрузка #%curr%...',
-  		mainClass: 'popup-buble',
-  		gallery: {
-  			enabled: true,
-  			navigateByImgClick: true,
-  			preload: [0,1]
-  		},
-  		image: {
-  			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-  		}
-  	});
+    $("[js-popup-gallery]").magnificPopup({
+      delegate: "a",
+      type: "image",
+      tLoading: "Загрузка #%curr%...",
+      mainClass: "popup-buble",
+      gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+        preload: [0, 1]
+      },
+      image: {
+        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+      }
+    });
   }
 
-  function closeMfp(){
+  function closeMfp() {
     $.magnificPopup.close();
   }
 
@@ -288,48 +304,55 @@ $(document).ready(function(){
 
   // textarea autoExpand
   _document
-    .one('focus.autoExpand', '.ui-group textarea', function(){
-        var savedValue = this.value;
-        this.value = '';
-        this.baseScrollHeight = this.scrollHeight;
-        this.value = savedValue;
+    .one("focus.autoExpand", ".ui-group textarea", function() {
+      var savedValue = this.value;
+      this.value = "";
+      this.baseScrollHeight = this.scrollHeight;
+      this.value = savedValue;
     })
-    .on('input.autoExpand', '.ui-group textarea', function(){
-        var minRows = this.getAttribute('data-min-rows')|0, rows;
-        this.rows = minRows;
-        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
-        this.rows = minRows + rows;
+    .on("input.autoExpand", ".ui-group textarea", function() {
+      var minRows = this.getAttribute("data-min-rows") | 0,
+        rows;
+      this.rows = minRows;
+      rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
+      this.rows = minRows + rows;
     });
 
   // Masked input
-  function initMasks(){
-    $("[js-dateMask]").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});
-    $("input[type='tel']").mask("+7 (000) 000-0000", {placeholder: "+7 (___) ___-____"});
+  function initMasks() {
+    $("[js-dateMask]").mask("99.99.99", { placeholder: "ДД.ММ.ГГ" });
+    $("input[type='tel']").mask("+7 (000) 000-0000", {
+      placeholder: "+7 (___) ___-____"
+    });
   }
 
   // selectric
-  function initSelectric(){
-    $('select').selectric({
+  function initSelectric() {
+    $("select").selectric({
       maxHeight: 300,
-      arrowButtonMarkup: '<b class="button"><svg class="ico ico-select-down"><use xlink:href="img/sprite.svg#ico-select-down"></use></svg></b>',
+      arrowButtonMarkup:
+        '<b class="button"><svg class="ico ico-select-down"><use xlink:href="img/sprite.svg#ico-select-down"></use></svg></b>',
 
-      onInit: function(element, data){
+      onInit: function(element, data) {
         var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
+          $wrapper = $elm.closest("." + data.classes.wrapper);
 
-        $wrapper.find('.label').html($elm.attr('placeholder'));
+        $wrapper.find(".label").html($elm.attr("placeholder"));
       },
-      onBeforeOpen: function(element, data){
+      onBeforeOpen: function(element, data) {
         var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
+          $wrapper = $elm.closest("." + data.classes.wrapper);
 
-        $wrapper.find('.label').data('value', $wrapper.find('.label').html()).html($elm.attr('placeholder'));
+        $wrapper
+          .find(".label")
+          .data("value", $wrapper.find(".label").html())
+          .html($elm.attr("placeholder"));
       },
-      onBeforeClose: function(element, data){
+      onBeforeClose: function(element, data) {
         var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
+          $wrapper = $elm.closest("." + data.classes.wrapper);
 
-        $wrapper.find('.label').html($wrapper.find('.label').data('value'));
+        $wrapper.find(".label").html($wrapper.find(".label").data("value"));
       }
     });
   }
@@ -337,32 +360,37 @@ $(document).ready(function(){
   ////////////
   // SCROLLMONITOR - WOW LIKE
   ////////////
-  function initScrollMonitor(){
-    $('.wow').each(function(i, el){
-
-      var elWatcher = scrollMonitor.create( $(el) );
+  function initScrollMonitor() {
+    $(".wow").each(function(i, el) {
+      var elWatcher = scrollMonitor.create($(el));
 
       var delay;
-      if ( $(window).width() < 768 ){
-        delay = 0
+      if ($(window).width() < 768) {
+        delay = 0;
       } else {
-        delay = $(el).data('animation-delay');
+        delay = $(el).data("animation-delay");
       }
 
-      var animationClass = $(el).data('animation-class') || "wowFadeUp"
+      var animationClass = $(el).data("animation-class") || "wowFadeUp";
 
-      var animationName = $(el).data('animation-name') || "wowFade"
+      var animationName = $(el).data("animation-name") || "wowFade";
 
-      elWatcher.enterViewport(throttle(function() {
-        $(el).addClass(animationClass);
-        $(el).css({
-          'animation-name': animationName,
-          'animation-delay': delay,
-          'visibility': 'visible'
-        });
-      }, 100, {
-        'leading': true
-      }));
+      elWatcher.enterViewport(
+        throttle(
+          function() {
+            $(el).addClass(animationClass);
+            $(el).css({
+              "animation-name": animationName,
+              "animation-delay": delay,
+              visibility: "visible"
+            });
+          },
+          100,
+          {
+            leading: true
+          }
+        )
+      );
       // elWatcher.exitViewport(throttle(function() {
       //   $(el).removeClass(animationClass);
       //   $(el).css({
@@ -372,7 +400,6 @@ $(document).ready(function(){
       //   });
       // }, 100));
     });
-
   }
 
   ////////////////
@@ -381,49 +408,52 @@ $(document).ready(function(){
 
   // jQuery validate plugin
   // https://jqueryvalidation.org
-  function initValidations(){
+  function initValidations() {
     // GENERIC FUNCTIONS
     var validateErrorPlacement = function(error, element) {
-      error.addClass('ui-input__validation');
+      error.addClass("ui-input__validation");
       error.appendTo(element.parent("div"));
-    }
+    };
     var validateHighlight = function(element) {
       $(element).addClass("has-error");
-    }
+    };
     var validateUnhighlight = function(element) {
       $(element).removeClass("has-error");
-    }
+    };
     var validateSubmitHandler = function(form) {
-      $(form).addClass('loading');
+      $(form).addClass("loading");
       $.ajax({
         type: "POST",
-        url: $(form).attr('action'),
+        url: $(form).attr("action"),
         data: $(form).serialize(),
         success: function(response) {
-          $(form).removeClass('loading');
+          $(form).removeClass("loading");
           var data = $.parseJSON(response);
-          if (data.status == 'success') {
+          if (data.status == "success") {
             // do something I can't test
           } else {
-              $(form).find('[data-error]').html(data.message).show();
+            $(form)
+              .find("[data-error]")
+              .html(data.message)
+              .show();
           }
         }
       });
-    }
+    };
 
     var validatePhone = {
       required: true,
       normalizer: function(value) {
-          var PHONE_MASK = '+X (XXX) XXX-XXXX';
-          if (!value || value === PHONE_MASK) {
-              return value;
-          } else {
-              return value.replace(/[^\d]/g, '');
-          }
+        var PHONE_MASK = "+X (XXX) XXX-XXXX";
+        if (!value || value === PHONE_MASK) {
+          return value;
+        } else {
+          return value.replace(/[^\d]/g, "");
+        }
       },
       minlength: 11,
       digits: true
-    }
+    };
 
     /////////////////////
     // REGISTRATION FORM
@@ -442,7 +472,7 @@ $(document).ready(function(){
         },
         password: {
           required: true,
-          minlength: 6,
+          minlength: 6
         }
         // phone: validatePhone
       },
@@ -450,13 +480,13 @@ $(document).ready(function(){
         last_name: "Заполните это поле",
         first_name: "Заполните это поле",
         email: {
-            required: "Заполните это поле",
-            email: "Email содержит неправильный формат"
+          required: "Заполните это поле",
+          email: "Email содержит неправильный формат"
         },
         password: {
-            required: "Заполните это поле",
-            email: "Пароль мимимум 6 символов"
-        },
+          required: "Заполните это поле",
+          email: "Пароль мимимум 6 символов"
+        }
         // phone: {
         //     required: "Заполните это поле",
         //     minlength: "Введите корректный телефон"
@@ -494,15 +524,15 @@ $(document).ready(function(){
   //////////
   // BARBA PJAX
   //////////
-  var easingSwing = [.02, .01, .47, 1]; // default jQuery easing for anime.js
+  var easingSwing = [0.02, 0.01, 0.47, 1]; // default jQuery easing for anime.js
 
   Barba.Pjax.Dom.containerClass = "page";
 
   var FadeTransition = Barba.BaseTransition.extend({
     start: function() {
-      Promise
-        .all([this.newContainerLoading, this.fadeOut()])
-        .then(this.fadeIn.bind(this));
+      Promise.all([this.newContainerLoading, this.fadeOut()]).then(
+        this.fadeIn.bind(this)
+      );
     },
 
     fadeOut: function() {
@@ -510,15 +540,15 @@ $(document).ready(function(){
 
       anime({
         targets: this.oldContainer,
-        opacity : .5,
+        opacity: 0.5,
         easing: easingSwing, // swing
         duration: 300,
-        complete: function(anim){
+        complete: function(anim) {
           deferred.resolve();
         }
-      })
+      });
 
-      return deferred.promise
+      return deferred.promise;
     },
 
     fadeIn: function() {
@@ -528,8 +558,8 @@ $(document).ready(function(){
       $(this.oldContainer).hide();
 
       $el.css({
-        visibility : 'visible',
-        opacity : .5
+        visibility: "visible",
+        opacity: 0.5
       });
 
       anime({
@@ -545,7 +575,7 @@ $(document).ready(function(){
         easing: easingSwing, // swing
         duration: 300,
         complete: function(anim) {
-          triggerBody()
+          triggerBody();
           _this.done();
         }
       });
@@ -560,12 +590,17 @@ $(document).ready(function(){
   Barba.Prefetch.init();
   Barba.Pjax.start();
 
-  Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
+  Barba.Dispatcher.on("newPageReady", function(
+    currentStatus,
+    oldStatus,
+    container,
+    newPageRawHTML
+  ) {
     pageReady();
   });
 
   // some plugins get bindings onNewPage only that way
-  function triggerBody(){
+  function triggerBody() {
     _window.scrollTop(0);
     $(window).scroll();
     $(window).resize();
@@ -574,26 +609,25 @@ $(document).ready(function(){
   //////////
   // DEVELOPMENT HELPER
   //////////
-  function setBreakpoint(){
-    var wHost = window.location.host.toLowerCase()
-    var displayCondition = wHost.indexOf("localhost") >= 0 || wHost.indexOf("surge") >= 0
-    if (displayCondition){
+  function setBreakpoint() {
+    var wHost = window.location.host.toLowerCase();
+    var displayCondition =
+      wHost.indexOf("localhost") >= 0 || wHost.indexOf("surge") >= 0;
+    if (displayCondition) {
       var wWidth = _window.width();
 
-      var content = "<div class='dev-bp-debug'>"+wWidth+"</div>";
+      var content = "<div class='dev-bp-debug'>" + wWidth + "</div>";
 
-      $('.page').append(content);
-      setTimeout(function(){
-        $('.dev-bp-debug').fadeOut();
-      },1000);
-      setTimeout(function(){
-        $('.dev-bp-debug').remove();
-      },1500)
+      $(".page").append(content);
+      setTimeout(function() {
+        $(".dev-bp-debug").fadeOut();
+      }, 1000);
+      setTimeout(function() {
+        $(".dev-bp-debug").remove();
+      }, 1500);
     }
   }
-
 });
-
 
 // HELPERS and PROTOTYPE FUNCTIONS
 
