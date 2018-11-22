@@ -17,7 +17,7 @@ header.header
           | 3
         a.header__menu-item
           .header__menu-icon
-            +svgMono('like')
+            +svgMono('stimulation')
           | 2
         a.header__menu-item
           .header__menu-icon
@@ -54,8 +54,19 @@ header.header
             a.header__nav-item(href="#") Магазин
           li
             a.header__nav-item(href="#") Помощь
-        a.header__nav-lang(href="#")
-          img(src="img/flag.jpg", alt="")
+        .header__nav-lang
+          a(href="#" js-language-btn).header__language.is-active
+            img(src="img/rus.jpg", alt="")
+            span RUS
+          a(href="#" js-language-btn).header__language
+            img(src="img/kz.jpg", alt="")
+            span KZ
+          a(href="#" js-language-btn).header__language
+            img(src="img/by.jpg", alt="")
+            span BY
+          a(href="#" js-language-btn).header__language
+            img(src="img/by.jpg", alt="")
+            span BY
       
         
 // HEADER :: END

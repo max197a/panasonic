@@ -155,6 +155,11 @@ $(document).ready(function(){
     blockScroll();
   });
 
+  _document.on('click', '[js-language-btn]', function(){
+    $('.header__language').removeClass('is-active');
+    $(this).addClass('is-active');
+  });
+
   function closeMobileMenu(){
     $('[js-hamburger]').removeClass('is-active');
     $('.mobile-navi').removeClass('is-active');

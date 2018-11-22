@@ -53,6 +53,10 @@
   &__menu-icon
     font-size: 20px
     margin-right: 8px
+    .ico-mono-mail
+        font-size: 17px
+    .ico-mono-courses
+      font-size: 18px
 
   &__hamburger
     display: none
@@ -91,10 +95,14 @@
     background: #f4f4f4
     padding: 19px 0
     width: 100%
+    max-height: 59px
+    height: 100%
 
   &__nav-wrapper
     display: flex
-    align-items: center
+    align-items: flex-start
+    max-height: 22px
+    height: 100%
 
   &__nav-list
     margin: 0
@@ -104,21 +112,93 @@
     font-size: 20px
     font-family: $baseFont
     line-height: 1
-    margin-right: 38px
+    margin-right: 34px
     transition: color .25s $ease
     &:hover
       color: #aaa9a9
   &__nav-lang
     margin-left: auto
     display: inline-block
+    // margin-bottom: -2px
+    // margin-top: -2px
+    // outline: 1px solid red
+    margin: -17px 0 -16px auto
+    font-size: 0
+    position: relative
+    height: auto
+    cursor: pointer
+    align-self: flex-start
 
+    &:hover
+      padding-top: 58px
+      .header__language
+        background: #fff
+        height: auto
+        padding: 17px 16px 16px
+        border: 2px solid #f4f4f4
+        border-top: none
+        min-width: 110px
+        right: 0
+        img
+          margin-right: 0
+        span
+          font-size: 14px
+          margin-left: 15px
+          opacity: 1
+
+
+  &__language
+    display: flex
+    align-items: center
+    font-size: 14px
+    line-height: normal
+    // transition: height .25s $ease, padding .25s $ease
+    // transition: background .25s $ease
+    // padding: 17px 16px 16px
+    position: relative
+    z-index: 2
+    height: 0
+    overflow: hidden
+    padding: 0 16px
+    margin: 0 -16px
+    min-width: 60px
+    margin-right: -32px
+    &.is-active
+      height: auto
+      padding: 17px 16px 16px
+      position: absolute
+      width: 100%
+      top: 0
+      right: 25px
     img
-      height: 17px
+      height: 22px
       width: auto
+      position: relative
+      z-index: 2
+      margin-right: 8px
+      // transition: all .25s $ease
+    span
+      // font-size: 14px
+      color: #000
+      line-height: normal
+      // margin-left: 15px
+      // display: none
 
+      margin-left: -35px
+      overflow: hidden
+      // transition: all .25s $ease
+      opacity: 0
+      position: relative
+      z-index: 1
     
 
-
++r($lg)
+  .header
+    &__nav
+      padding: 14px 0
+    &__nav-item
+      font-size: 16px
+      margin-right: 25px
 
 
 +r($md)
@@ -127,6 +207,8 @@
       margin-left: auto
       display: block
 
+
 +r($sm)
   .header
     &__logo
+
