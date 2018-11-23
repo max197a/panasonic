@@ -1,0 +1,230 @@
+.main
+  padding: 18px 0 20px
+  &__grid
+    margin-left: -16px
+    margin-right: -16px
+    display: flex
+    align-items: flex-start
+    flex-wrap: wrap
+  &__item
+    flex: 0 1 25%
+    max-width: 25%
+    min-width: 1px
+    min-height: 0
+    padding: 18px
+    &--large
+      flex: 0 1 50%
+      max-width: 50%
+      h2
+        &.sale
+          font-size: 36px
+          text-transform: uppercase
+          position: relative
+          z-index: 3
+          color: #fff
+    &--item4
+      margin-top: -330px
+      margin-left: 25%
+    &--item5
+      margin-top: -330px
+      margin-left: 50%
+    &--item6
+      margin-top: -330px
+      margin-left: 75%
+    
+    h2
+      margin: 0
+      font-size: 18px
+      font-family: $baseFont
+      font-weight: 500
+      color: #000
+      display: inline-block
+      max-width: 88%
+      line-height: 1.2
+      text-transform: uppercase
+  &__info
+    margin: 0
+    margin-top: 18px
+    font-size: 14px
+    color: #000
+    font-family: $baseFont
+    max-width: 98%
+    padding-left: 1px
+    line-height: 1.2
+  &__link
+    display: inline
+    border-bottom: 1px solid $colorBlue
+    color: $colorBlue
+
+  &__item-container
+    background: #f4f4f4
+    min-height: 294px
+    max-height: 294px
+    padding: 16px 19px
+    position: relative
+    display: flex
+    flex-direction: column
+    font-size: 0
+    line-height: 1
+    position: relative
+    transition: background .25s $ease
+    img
+      width: 100%
+      height: auto
+    &:before
+      position: absolute
+      width: calc(100% - 6px)
+      height: calc(100% - 6px)
+      left: 0
+      top: 0
+      display: block
+      content: ''
+      border: 3px solid transparent
+      transition: border-color .25s $ease
+    &:hover
+      background: #fff
+      .main__rank
+        background: #f4f4f4
+        color: #030303
+      .main__icon
+        color: #ccc9c9
+    &--yellow
+      &:hover
+        &:before
+          border-color: #ffd247
+    &--turquoise
+      &:hover
+        &:before
+          border-color: #63e3e5
+    &--blue
+      &:hover
+        &:before
+          border-color: #6e8be8
+    &--orange
+      &:hover
+        &:before
+          border-color: #f6b07b
+    &--finder
+      &:hover
+        .main__play
+          background: transparent
+    &--banner
+      .main__image-banner
+        opacity: 0.85
+      &:hover
+        .main__image-banner
+          opacity: 1
+    &--form
+      padding: 18px 19px
+      min-height: 620px
+      h2
+        text-transform: none
+      &:before
+        position: absolute
+        display: block
+        content: ''
+        width: calc(100% - 6px)
+        height: calc(100% - 6px)
+        border: 3px solid #dcdada
+        left: 0
+        top: 0
+      &:hover
+        &:before
+          border-color: $colorBlue
+  &__item-bottom
+    margin-top: auto
+    display: flex
+    align-items: flex-end
+  &__rank
+    display: inline-block
+    padding: 7px 15px 6px
+    border-radius: 25px
+    color: #fff
+    font-size: 12px
+    text-align: center
+    margin: 0
+    position: relative
+    z-index: 3
+    transition: color .25s $ease, background .25s $ease
+    &--yellow
+      background: #ffd247
+    &--turquoise
+      background: #63e3e5
+    &--blue
+      background: #6e8be8
+    &--orange
+      background: #f6b07b
+  &__icon
+    font-size: 76px
+    color: $colorBlue
+    margin-left: auto
+    max-height: 79px
+    transition: color .25s $ease
+
+  &__image-gold
+    position: static
+    margin-top: 18px
+    max-width: 182px
+    width: 74%
+    margin-left: auto
+    // img
+    //   width: 100%
+    //   height: auto
+
+  &__image-medal
+    position: absolute
+    top: 0
+    right: 15px
+    max-width: 115px
+    width: 40%
+    height: auto
+    // img
+    //   width: 100%
+    //   height: auto
+
+  &__image-camera
+    position: absolute
+    max-width: 323px
+    width: 50%
+    top: 50%
+    transform: translateY(-50%)
+    right: 20px
+    // img
+    //   width: 100%
+    //   height: auto
+
+  &__image-banner
+    position: absolute
+    width: 100%
+    height: 100%
+    left: 0
+    top: 0
+    overflow: hidden
+    transition: opacity .25s $ease
+    img
+      height: 100%
+      width: 100%
+
+  &__play
+    position: absolute
+    z-index: 2
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background: rgba(#3345f3, 0.43)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: background .25s $ease
+  &__play-icon
+    font-size: 100px
+    color: #fff
+  &__image-slide
+    width: 70%
+    display: flex
+    margin: auto
+    justify-content: center
+    img
+      width: auto
+      height: auto

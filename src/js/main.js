@@ -26,6 +26,7 @@ $(document).ready(function() {
     initSelectric();
     initScrollMonitor();
     initValidations();
+    initParallax();
 
     // AVAILABLE in _components folder
     // copy paste in main.js and initialize here
@@ -158,7 +159,6 @@ $(document).ready(function() {
     $(this).toggleClass("is-active");
     $(".header").toggleClass("is-open");
 
-
     blockScroll();
   });
 
@@ -246,6 +246,15 @@ $(document).ready(function() {
       normalizeSlideIndex: true,
       grabCursor: true,
       freeMode: true
+    });
+  }
+
+  //////////
+  // PARALLAX
+  /////////
+  function initParallax() {
+    $("[js-parallax-scene]").each(function(i, scene) {
+      var parallax = new Parallax(scene);
     });
   }
 

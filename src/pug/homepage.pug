@@ -42,6 +42,10 @@ block content
                     +svgMono('tests')
                   span Незавершенные тесты — 3
         .firstscreen__right
+          .firstscreen__parallax(js-parallax-scene)
+            img(src="img/parallax-1.svg", alt="" data-depth="0.5")
+            //- .firstscreen__parallax-icon
+            //-   +svgMono('parallax-1')
           .firstscreen__info
             h1.firstscreen__title Получай призы
             p.firstscreen__desc отвечая на вопросы, проходя тесты и общаясь на форуме ты можешь получить баллы, на которые можно покупатьпризы в нашем магазине!
@@ -49,6 +53,115 @@ block content
             img(src="img/main-desktop.png", alt="")
 
   // END SECTION :: FIRSTSCREEN
+
+  // BEGIN SECTION :: main
+  section.main.wow
+    .container
+      .main__grid
+        .main__item
+          form(action="#")
+            .main__item-container.main__item-container--form
+              h2 Микроволновые печи: Инверторное управление магнетроном:
+              p.main__info получил 5 баллов за предыдущий Вопрос дня (Хлебопечки: Внутреннее покрытие стенок ведра)
+
+        .main__item
+          a.main__item-container.main__item-container--yellow(href="#")
+            h2 Константин Константинов Константинопольский
+            p.main__info получил 5 баллов за предыдущий Вопрос дня (Хлебопечки: Внутреннее покрытие стенок ведра)
+            .main__item-bottom
+              p.main__rank.main__rank--yellow Победитель
+              .main__icon
+                +svgMono('win')
+
+        .main__item.main__item--large
+          a.main__item-container.main__item-container--large.main__item-container--yellow(href="#")
+            h2 магазин
+            p.main__info Здесь можно потратить баллы
+            .main__image-camera
+              img(src="img/camera.png", alt="")
+            .main__item-bottom
+              p.main__rank.main__rank--yellow Мотивация
+
+        .main__item.main__item--item4
+          a.main__item-container.main__item-container--yellow(href="#")
+            h2 Баллы и репутация
+            p.main__info что нужно сделать, чтобызаработать и обменять баллы
+            .main__image-gold
+              img(src="img/gold.png", alt="")
+            .main__item-bottom
+              p.main__rank.main__rank--yellow Мотивация
+
+        .main__item.main__item--item5
+          a.main__item-container.main__item-container--turquoise(href="#")
+            h2 ФОРУМ
+            p.main__info Если вы не зарегистрированы на форуме, перейдите на 
+              span.main__link страницу регистрации
+            .main__item-bottom
+              p.main__rank.main__rank--turquoise Развлечение
+              .main__icon
+                +svgMono('speak')
+
+        .main__item.main__item--item6
+          a.main__item-container.main__item-container--blue(href="#")
+            h2 обзор техники
+            p.main__info размести свой обзор и получидо +200 баллов
+            .main__item-bottom
+              p.main__rank.main__rank--blue Развлечение
+              .main__icon
+                +svgMono('tv')
+
+        .main__item
+          a.main__item-container.main__item-container--blue(href="#")
+            h2 Электробритвы ES-RT77-S520
+            p.main__info Оставьте ваше мнение (что нравится, что не нравится, что следует изменить в товаре дня) и получите 1 балл. Лучший ответ за неделю +50 баллов в кошелек.
+            p.main__info
+              span.main__link Написать мнение
+            .main__item-bottom
+              p.main__rank.main__rank--blue Развлечение
+              .main__icon
+                +svgMono('like2')
+        
+        .main__item
+          a.main__item-container.main__item-container--turquoise(href="#")
+            h2 фотоконкурс
+            p.main__info Тема: Япония
+            p.main__info Задача: Сделайте фото на тему Япония и пришлите нам.
+            p.main__info Приём работ: с 28.08 по 09.09 включительно
+            .main__item-bottom
+              p.main__rank.main__rank--turquoise Развлечение
+              .main__icon
+                +svgMono('photo')
+
+        .main__item.main__item--large
+          a.main__item-container.main__item-container--large.main__item-container--finder(href="#")
+            .main__image-banner
+              img(src="img/finder.jpg", alt="")
+            .main__play
+              .main__play-icon
+                +svgMono('play')
+            .main__item-bottom
+              p.main__rank.main__rank--blue Развлечение
+
+        .main__item
+          .main__item-container
+            .main__image-slide
+              img(src="img/main-slide.png", alt="")
+
+        .main__item.main__item--large
+          a.main__item-container.main__item-container--large.main__item-container--banner(href="#")
+            h2.sale РАССРОЧКА!
+            .main__image-banner
+              img(src="img/banner.jpg", alt="")
+
+        .main__item
+          a.main__item-container.main__item-container--orange(href="#")
+            h2 Рейтинг
+            p.main__info участников сайта elearning.panasonic.ru
+            .main__image-medal
+              img(src="img/medal.png", alt="")
+            .main__item-bottom
+              p.main__rank.main__rank--orange Олимпиада Panasonic
+  // END SECTION :: main
 
   // BEGIN SECTION :: NEWS
   section.news.wow
