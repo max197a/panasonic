@@ -1,5 +1,7 @@
 .main
   padding: 18px 0 20px
+  .container
+    position: relative
   &__grid
     margin-left: -16px
     margin-right: -16px
@@ -355,6 +357,36 @@
   &__mobile
     display: none
 
+  &__parallax
+    position: absolute
+    width: 100%
+    height: auto
+    img
+      width: 100%
+      height: auto
+    &--im1
+      width: 230px
+      right: -100px
+      top: -100px
+    &--im2
+      width: 190px
+      left: -120px
+      top: 12%
+      transform: rotate(-35deg) !important
+    &--im3
+      width: 180px
+      right: -140px
+      top: 50%
+      transform: rotate(-90deg) !important
+    &--im4
+      width: 150px
+      right: -100px
+      top: 59%
+    &--im5
+      width: 180px
+      left: -140px
+      bottom: -40px
+
 +r($xl)
   .main
     &__item
@@ -377,6 +409,22 @@
         min-height: 0
         padding: 18px
         min-width: 290px
+    &__parallax
+      &--im1
+        width: 230px
+        right: -30px
+        top: -30px
+      &--im2
+        left: -80px
+      &--im3
+        width: 180px
+        right: -80px
+        top: 50%
+      &--im4
+        right: -20px
+      &--im5
+        left: -30px
+        bottom: -20px
 
 +r($lg)
   .main
@@ -458,6 +506,8 @@
       img
         width: 100%
         height: auto
+    &__parallax
+      display: none
 
 +r($md)
   .main

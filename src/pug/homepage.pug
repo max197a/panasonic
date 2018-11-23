@@ -59,6 +59,17 @@ block content
   // BEGIN SECTION :: main
   section.main.wow
     .container
+      .main__parallax.main__parallax--im1(js-parallax-scene)
+        img(src="img/main-parallax-1.svg", alt="" data-depth="1")
+      .main__parallax.main__parallax--im2(js-parallax-scene)
+        img(src="img/parallax-1.svg", alt="" data-depth="-3")
+      .main__parallax.main__parallax--im3(js-parallax-scene)
+        img(src="img/main-parallax-1.svg", alt="" data-depth="2")
+      .main__parallax.main__parallax--im4(js-parallax-scene)
+        img(src="img/parallax-1.svg", alt="" data-depth="4.7")
+      .main__parallax.main__parallax--im5(js-parallax-scene)
+        img(src="img/main-parallax-1.svg", alt="" data-depth="5")
+
       .main__grid(js-masonry)
         .main__item.main__item--form
           form(action="#")
