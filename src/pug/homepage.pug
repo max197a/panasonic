@@ -62,7 +62,30 @@ block content
           form(action="#")
             .main__item-container.main__item-container--form
               h2 Микроволновые печи: Инверторное управление магнетроном:
-              p.main__info получил 5 баллов за предыдущий Вопрос дня (Хлебопечки: Внутреннее покрытие стенок ведра)
+              .main__radio-buttons
+                .input-container
+                  label.radio(for="c1")
+                    input#c1(type="radio" name="group1")
+                    .radio__text Сохраняет витамины
+                .input-container
+                  label.radio(for="c2")
+                    input#c2(type="radio" name="group1")
+                    .radio__text Быстро и бережно размораживает продукты
+                .input-container
+                  label.radio(for="c3")
+                    input#c3(type="radio" name="group1")
+                    .radio__text Все вышеперечисленное
+                .input-container
+                  label.radio(for="c4")
+                    input#c4(type="radio" name="group1")
+                    .radio__text Экономит электроэнергию
+              input.main__button(type="submit", value="ответить")
+              a.main__points(href="#")
+                .main__points-icon
+                  +svgMono('star')
+                span Как зарабатывать баллы
+              .main__item-bottom
+                p.main__rank.main__rank--blue Вопрос дня
 
         .main__item
           a.main__item-container.main__item-container--yellow(href="#")
@@ -143,9 +166,19 @@ block content
               p.main__rank.main__rank--blue Развлечение
 
         .main__item
-          .main__item-container
+          .main__item-container.main__item-container--typical
             .main__image-slide
-              img(src="img/main-slide.png", alt="")
+              // Swiper
+              .swiper-container(js-main-slider)
+                .swiper-wrapper
+                  .swiper-slide
+                    img(src="img/main-slide.png", alt="")
+                  .swiper-slide
+                    img(src="img/main-slide.png", alt="")
+                  .swiper-slide
+                    img(src="img/main-slide.png", alt="")
+                // Add Pagination
+                .swiper-pagination
 
         .main__item.main__item--large
           a.main__item-container.main__item-container--large.main__item-container--banner(href="#")

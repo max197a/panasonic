@@ -247,6 +247,12 @@ $(document).ready(function() {
       grabCursor: true,
       freeMode: true
     });
+
+    new Swiper("[js-main-slider]", {
+      pagination: {
+        el: ".swiper-pagination"
+      }
+    });
   }
 
   //////////
