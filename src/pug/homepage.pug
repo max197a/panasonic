@@ -51,6 +51,8 @@ block content
             p.firstscreen__desc отвечая на вопросы, проходя тесты и общаясь на форуме ты можешь получить баллы, на которые можно покупатьпризы в нашем магазине!
           .firstscreen__image-desktop
             img(src="img/main-desktop.png", alt="")
+          .firstscreen__image-mobile
+            img(src="img/main-mobile.png", alt="")
 
   // END SECTION :: FIRSTSCREEN
 
@@ -58,7 +60,7 @@ block content
   section.main.wow
     .container
       .main__grid(js-masonry)
-        .main__item
+        .main__item.main__item--form
           form(action="#")
             .main__item-container.main__item-container--form
               h2 Микроволновые печи: Инверторное управление магнетроном:
@@ -87,7 +89,7 @@ block content
               .main__item-bottom
                 p.main__rank.main__rank--blue Вопрос дня
 
-        .main__item
+        .main__item(js-teleport data-teleport-to="main__item--yellow1" data-teleport-condition="<992")
           a.main__item-container.main__item-container--yellow(href="#")
             h2 Константин Константинов Константинопольский
             p.main__info получил 5 баллов за предыдущий Вопрос дня (Хлебопечки: Внутреннее покрытие стенок ведра)
@@ -96,7 +98,7 @@ block content
               .main__icon
                 +svgMono('win')
 
-        .main__item.main__item--large.main__item--shop
+        .main__item.main__item--large.main__item--shop(js-teleport data-teleport-to="main__item--yellow3" data-teleport-condition="<992")
           a.main__item-container.main__item-container--large.main__item-container--yellow(href="#")
             h2 магазин
             p.main__info Здесь можно потратить баллы
@@ -105,7 +107,7 @@ block content
             .main__item-bottom
               p.main__rank.main__rank--yellow Мотивация
 
-        .main__item.main__item--item4
+        .main__item(js-teleport data-teleport-to="main__item--yellow2" data-teleport-condition="<992")
           a.main__item-container.main__item-container--yellow(href="#")
             h2 Баллы и репутация
             p.main__info что нужно сделать, чтобызаработать и обменять баллы
@@ -114,7 +116,7 @@ block content
             .main__item-bottom
               p.main__rank.main__rank--yellow Мотивация
 
-        .main__item.main__item--item5
+        .main__item(js-teleport data-teleport-to="main__item--turquoise1" data-teleport-condition="<992")
           a.main__item-container.main__item-container--turquoise(href="#")
             h2 ФОРУМ
             p.main__info Если вы не зарегистрированы на форуме, перейдите на 
@@ -124,7 +126,7 @@ block content
               .main__icon
                 +svgMono('speak')
 
-        .main__item.main__item--item6
+        .main__item(js-teleport data-teleport-to="main__item--blue1" data-teleport-condition="<992")
           a.main__item-container.main__item-container--blue(href="#")
             h2 обзор техники
             p.main__info размести свой обзор и получидо +200 баллов
@@ -133,7 +135,7 @@ block content
               .main__icon
                 +svgMono('tv')
 
-        .main__item
+        .main__item(js-teleport data-teleport-to="main__item--blue2" data-teleport-condition="<992")
           a.main__item-container.main__item-container--blue(href="#")
             h2 Электробритвы ES-RT77-S520
             p.main__info Оставьте ваше мнение (что нравится, что не нравится, что следует изменить в товаре дня) и получите 1 балл. Лучший ответ за неделю +50 баллов в кошелек.
@@ -144,7 +146,7 @@ block content
               .main__icon
                 +svgMono('like2')
         
-        .main__item
+        .main__item(js-teleport data-teleport-to="main__item--turquoise2" data-teleport-condition="<992")
           a.main__item-container.main__item-container--turquoise(href="#")
             h2 фотоконкурс
             p.main__info Тема: Япония
@@ -155,7 +157,7 @@ block content
               .main__icon
                 +svgMono('photo')
 
-        .main__item.main__item--large
+        .main__item.main__item--large(js-teleport data-teleport-to="main__item--banner-play" data-teleport-condition="<992")
           a.main__item-container.main__item-container--large.main__item-container--finder(href="#")
             .main__image-banner
               img(src="img/finder.jpg", alt="")
@@ -165,12 +167,12 @@ block content
             .main__item-bottom
               p.main__rank.main__rank--blue Развлечение
 
-        .main__item
+        .main__item.main__item--slider
           .main__item-container.main__item-container--typical
             .main__image-slide
               // Swiper
               .swiper-container(js-main-slider)
-                .swiper-wrapper
+                .swiper-wrapper(js-teleport data-teleport-to="main__item--slider" data-teleport-condition="<992")
                   .swiper-slide
                     img(src="img/main-slide.png", alt="")
                   .swiper-slide
@@ -180,13 +182,13 @@ block content
                 // Add Pagination
                 .swiper-pagination
 
-        .main__item.main__item--large
+        .main__item.main__item--large(js-teleport data-teleport-to="main__item--banner" data-teleport-condition="<992")
           a.main__item-container.main__item-container--large.main__item-container--banner(href="#")
             h2.sale РАССРОЧКА!
             .main__image-banner
               img(src="img/banner.jpg", alt="")
 
-        .main__item
+        .main__item.main__item--rating(js-teleport data-teleport-to="main__item--rating" data-teleport-condition="<992")
           a.main__item-container.main__item-container--orange(href="#")
             h2 Рейтинг
             p.main__info участников сайта elearning.panasonic.ru
@@ -194,6 +196,39 @@ block content
               img(src="img/medal.png", alt="")
             .main__item-bottom
               p.main__rank.main__rank--orange Олимпиада Panasonic
+
+      .main__mobile
+        .main__yellow(js-slider-mobile)
+          .swiper-wrapper
+            .main__item(data-teleport-target="main__item--yellow1")
+            .main__item.main__item--large.main__item--shop(data-teleport-target="main__item--yellow2")
+            .main__item(data-teleport-target="main__item--yellow3")
+        .main__turquoise(js-slider-mobile)
+          .swiper-wrapper
+            .main__item(data-teleport-target="main__item--turquoise1")
+            .main__item(data-teleport-target="main__item--turquoise2")
+        .main__blue(js-slider-mobile)
+          .swiper-wrapper
+            .main__item(data-teleport-target="main__item--blue1")
+            .main__item(data-teleport-target="main__item--blue2")
+        .main__slider(js-slider-mobile)
+          .swiper-wrapper
+            .main__item.main__item--mobile-slide
+              .main__item-container.main__item-container--typical
+                .main__mobile-slide
+                  img(src="img/main-slide.png", alt="")
+            .main__item.main__item--mobile-slide
+              .main__item-container.main__item-container--typical
+                .main__mobile-slide
+                  img(src="img/main-slide.png", alt="")
+            .main__item.main__item--mobile-slide
+              .main__item-container.main__item-container--typical
+                .main__mobile-slide
+                  img(src="img/main-slide.png", alt="")
+        .main__large
+          .main__item.main__item--rating(data-teleport-target="main__item--rating")
+          .main__item.main__item--large(data-teleport-target="main__item--banner-play")
+          .main__item.main__item--large(data-teleport-target="main__item--banner")
   // END SECTION :: main
 
   // BEGIN SECTION :: NEWS

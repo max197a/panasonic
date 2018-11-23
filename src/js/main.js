@@ -28,6 +28,7 @@ $(document).ready(function() {
     initValidations();
     initParallax();
     initMasonry();
+    initTeleport();
 
     // AVAILABLE in _components folder
     // copy paste in main.js and initialize here
@@ -175,6 +176,24 @@ $(document).ready(function() {
     blockScroll();
   }
 
+  (function() {
+    _document.ready(function() {
+      if ($(window).width() > 992) {
+        $("[js-masonry]").removeClass("static");
+      } else {
+        $("[js-masonry]").addClass("static");
+      }
+    });
+
+    _window.on("resize", function() {
+      if ($(window).innerWidth() > 992) {
+        $("[js-masonry]").removeClass("static");
+      } else {
+        $("[js-masonry]").addClass("static");
+      }
+    });
+  })();
+
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
   function updateHeaderActiveClass() {
@@ -249,6 +268,20 @@ $(document).ready(function() {
       freeMode: true
     });
 
+    new Swiper("[js-slider-mobile]", {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "main__item",
+      direction: "horizontal",
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: "auto",
+      normalizeSlideIndex: true,
+      grabCursor: true,
+      freeMode: true
+    });
+
     new Swiper("[js-main-slider]", {
       pagination: {
         el: ".swiper-pagination"
@@ -256,9 +289,55 @@ $(document).ready(function() {
     });
   }
 
+  ////////////
+  // MASONRY
+  ////////////
   function initMasonry() {
     $("[js-masonry]").masonry({
-      itemSelector: ".main__item"
+      // itemSelector: ".masonry-item"
+    });
+  }
+
+  ////////////
+  // TELEPORT PLUGIN
+  ////////////
+
+  function initTeleport() {
+    $("[js-teleport]").each(function(i, val) {
+      var self = $(val);
+      var objHtml = $(val).html();
+      var target = $(
+        "[data-teleport-target=" + $(val).data("teleport-to") + "]"
+      );
+      var conditionMedia = $(val)
+        .data("teleport-condition")
+        .substring(1);
+      var conditionPosition = $(val)
+        .data("teleport-condition")
+        .substring(0, 1);
+
+      if (target && objHtml && conditionPosition) {
+        function teleport() {
+          var condition;
+
+          if (conditionPosition === "<") {
+            condition = _window.width() < conditionMedia;
+          } else if (conditionPosition === ">") {
+            condition = _window.width() > conditionMedia;
+          }
+
+          if (condition) {
+            target.html(objHtml);
+            self.html("");
+          } else {
+            self.html(objHtml);
+            target.html("");
+          }
+        }
+
+        teleport();
+        _window.on("resize", debounce(teleport, 100));
+      }
     });
   }
 
