@@ -27,6 +27,7 @@ $(document).ready(function() {
     initScrollMonitor();
     initValidations();
     initParallax();
+    initMasonry();
 
     // AVAILABLE in _components folder
     // copy paste in main.js and initialize here
@@ -252,6 +253,12 @@ $(document).ready(function() {
       pagination: {
         el: ".swiper-pagination"
       }
+    });
+  }
+
+  function initMasonry() {
+    $("[js-masonry]").masonry({
+      itemSelector: ".main__item"
     });
   }
 

@@ -57,7 +57,7 @@ block content
   // BEGIN SECTION :: main
   section.main.wow
     .container
-      .main__grid
+      .main__grid(js-masonry)
         .main__item
           form(action="#")
             .main__item-container.main__item-container--form
@@ -96,7 +96,7 @@ block content
               .main__icon
                 +svgMono('win')
 
-        .main__item.main__item--large
+        .main__item.main__item--large.main__item--shop
           a.main__item-container.main__item-container--large.main__item-container--yellow(href="#")
             h2 магазин
             p.main__info Здесь можно потратить баллы
