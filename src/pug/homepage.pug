@@ -169,10 +169,11 @@ block content
 
         .main__item.main__item--slider
           .main__item-container.main__item-container--typical
+            //- .main__image-slide(js-teleport data-teleport-to="main__item--slider" data-teleport-condition="<992")
             .main__image-slide
               // Swiper
               .swiper-container(js-main-slider)
-                .swiper-wrapper(js-teleport data-teleport-to="main__item--slider" data-teleport-condition="<992")
+                .swiper-wrapper
                   .swiper-slide
                     img(src="img/main-slide.png", alt="")
                   .swiper-slide
@@ -211,6 +212,8 @@ block content
           .swiper-wrapper
             .main__item(data-teleport-target="main__item--blue1")
             .main__item(data-teleport-target="main__item--blue2")
+        .main__slider(data-teleport-target="main__item--slider")
+          
         .main__slider(js-slider-mobile)
           .swiper-wrapper
             .main__item.main__item--mobile-slide
@@ -220,11 +223,11 @@ block content
             .main__item.main__item--mobile-slide
               .main__item-container.main__item-container--typical
                 .main__mobile-slide
-                  img(src="img/main-slide.png", alt="")
+                  img(src="img/product1.png", alt="")
             .main__item.main__item--mobile-slide
               .main__item-container.main__item-container--typical
                 .main__mobile-slide
-                  img(src="img/main-slide.png", alt="")
+                  img(src="img/product2.png", alt="")
         .main__large
           .main__item.main__item--rating(data-teleport-target="main__item--rating")
           .main__item.main__item--large(data-teleport-target="main__item--banner-play")
