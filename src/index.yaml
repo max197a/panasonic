@@ -1,9 +1,5 @@
-ProjectTitle: Project-name
+ProjectTitle: Panasonic
 
 PageList:
 - file: homepage.html
-  ready: 20
-- file: page.html
-  ready: 0
-- file: styleguide.html
-  ready: 20
+  ready: 70

@@ -4,8 +4,9 @@ header.header
     .header__wrapper
       .header__logo-container
         a(href="#").header__logo
-          +svgMono('logo')
-        a(href="#").header__logo-info Учебный центр
+          .header__logo-icon
+            +svgMono('logo')
+          .header__logo-info Учебный центр
       .header__menu
         a.header__menu-item
           .header__menu-icon
@@ -30,7 +31,7 @@ header.header
 
       .header__user
         a.header__user-image(href="#")
-          img(src="img/user.png", alt="")
+          img(src="img/user.png", srcset="img/user@2x.png 2x" alt="")
         a.header__user-logout(href="#") Выход
         
       .header__hamburger

@@ -13,7 +13,7 @@ block content
           .firstscreen__sidebar-content
             .firstscreen__head
               .firstscreen__image
-                img(src="img/user.png", alt="")
+                img(src="img/user.png" srcset="img/user@2x.png 2x" alt="")
               p.firstscreen__name Екатерина Николаева
             ul.firstscreen__menu
               li
@@ -43,16 +43,20 @@ block content
                   span Незавершенные тесты — 3
         .firstscreen__right
           .firstscreen__parallax(js-parallax-scene)
-            img(src="img/parallax-1.svg", alt="" data-depth="0.5")
-            //- .firstscreen__parallax-icon
-            //-   +svgMono('parallax-1')
+            img(src="img/parallax-1.svg", alt="" data-depth="0.25")
           .firstscreen__info
             h1.firstscreen__title Получай призы
             p.firstscreen__desc отвечая на вопросы, проходя тесты и общаясь на форуме ты можешь получить баллы, на которые можно покупатьпризы в нашем магазине!
-          .firstscreen__image-desktop
-            img(src="img/main-desktop.png", alt="")
-          .firstscreen__image-mobile
-            img(src="img/main-mobile.png", alt="")
+          .firstscreen__image-picture
+            picture
+              // 769px +
+              source(media="(min-width: 769px)" srcset="img/main-desktop.svg")
+
+              // 768px and less
+              source(media="(min-width: 0px)"  srcset="img/main-mobile.svg")
+
+              // fallback
+              img(src="img/main-desktop.svg" alt="")
 
   // END SECTION :: FIRSTSCREEN
 
@@ -60,20 +64,20 @@ block content
   section.main.wow
     .container
       .main__parallax.main__parallax--im1(js-parallax-scene)
-        img(src="img/main-parallax-1.svg", alt="" data-depth="1")
+        img(src="img/main-parallax-1.svg", alt="" data-depth="0.5")
       .main__parallax.main__parallax--im2(js-parallax-scene)
-        img(src="img/parallax-1.svg", alt="" data-depth="-3")
+        img(src="img/parallax-1.svg", alt="" data-depth="-1.5")
       .main__parallax.main__parallax--im3(js-parallax-scene)
-        img(src="img/main-parallax-1.svg", alt="" data-depth="2")
+        img(src="img/main-parallax-1.svg", alt="" data-depth="1")
       .main__parallax.main__parallax--im4(js-parallax-scene)
-        img(src="img/parallax-1.svg", alt="" data-depth="4.7")
+        img(src="img/parallax-1.svg", alt="" data-depth="2.3")
       .main__parallax.main__parallax--im5(js-parallax-scene)
-        img(src="img/main-parallax-1.svg", alt="" data-depth="5")
+        img(src="img/main-parallax-1.svg", alt="" data-depth="2.5")
 
       .main__grid(js-masonry)
         .main__item.main__item--form
-          form(action="#")
-            .main__item-container.main__item-container--form
+          .main__item-container.main__item-container--form
+            form(action="#")
               h2 Микроволновые печи: Инверторное управление магнетроном:
               .main__radio-buttons
                 .input-container
@@ -114,7 +118,7 @@ block content
             h2 магазин
             p.main__info Здесь можно потратить баллы
             .main__image-camera
-              img(src="img/camera.png", alt="")
+              img(src="img/camera.png" srcset="img/camera@2x.png 2x" alt="")
             .main__item-bottom
               p.main__rank.main__rank--yellow Мотивация
 
@@ -123,7 +127,7 @@ block content
             h2 Баллы и репутация
             p.main__info что нужно сделать, чтобызаработать и обменять баллы
             .main__image-gold
-              img(src="img/gold.png", alt="")
+              img(src="img/gold.png" srcset="img/gold@2x.png 2x" alt="")
             .main__item-bottom
               p.main__rank.main__rank--yellow Мотивация
 
@@ -169,9 +173,9 @@ block content
                 +svgMono('photo')
 
         .main__item.main__item--large(js-teleport data-teleport-to="main__item--banner-play" data-teleport-condition="<992")
-          a.main__item-container.main__item-container--large.main__item-container--finder(href="#")
+          a.main__item-container.main__item-container--large.main__item-container--blue.main__item-container--finder(href="#")
             .main__image-banner
-              img(src="img/finder.jpg", alt="")
+              img(src="img/finder.jpg" srcset="img/finder@2x.jpg 2x" alt="")
             .main__play
               .main__play-icon
                 +svgMono('play')
@@ -186,26 +190,29 @@ block content
               .swiper-container(js-main-slider)
                 .swiper-wrapper
                   .swiper-slide
-                    img(src="img/main-slide.png", alt="")
+                    .swiper-slide-image
+                      img(src="img/main-slide.png" srcset="img/main-slide@2x.png 2x" alt="")
                   .swiper-slide
-                    img(src="img/main-slide.png", alt="")
+                    .swiper-slide-image
+                      img(src="img/product1.png" srcset="img/product1@2x.png 2x" alt="")
                   .swiper-slide
-                    img(src="img/main-slide.png", alt="")
+                    .swiper-slide-image
+                      img(src="img/product2.png" srcset="img/product2@2x.png 2x" alt="")
                 // Add Pagination
-                .swiper-pagination
+                .swiper-pagination.swiper-pagination2
 
         .main__item.main__item--large(js-teleport data-teleport-to="main__item--banner" data-teleport-condition="<992")
           a.main__item-container.main__item-container--large.main__item-container--banner(href="#")
             h2.sale РАССРОЧКА!
             .main__image-banner
-              img(src="img/banner.jpg", alt="")
+              img(src="img/banner.jpg", srcset="img/banner@2x.jpg 2x" alt="")
 
         .main__item.main__item--rating(js-teleport data-teleport-to="main__item--rating" data-teleport-condition="<992")
           a.main__item-container.main__item-container--orange(href="#")
             h2 Рейтинг
             p.main__info участников сайта elearning.panasonic.ru
             .main__image-medal
-              img(src="img/medal.png", alt="")
+              img(src="img/medal.png" srcset="img/medal@2x.png 2x" alt="")
             .main__item-bottom
               p.main__rank.main__rank--orange Олимпиада Panasonic
 
@@ -230,15 +237,15 @@ block content
             .main__item.main__item--mobile-slide
               .main__item-container.main__item-container--typical
                 .main__mobile-slide
-                  img(src="img/main-slide.png", alt="")
+                  img(src="img/main-slide.png" srcset="img/main-slide@2x.png 2x" alt="")
             .main__item.main__item--mobile-slide
               .main__item-container.main__item-container--typical
                 .main__mobile-slide
-                  img(src="img/product1.png", alt="")
+                  img(src="img/product1.png" srcset="img/product1@2x.png 2x" alt="")
             .main__item.main__item--mobile-slide
               .main__item-container.main__item-container--typical
                 .main__mobile-slide
-                  img(src="img/product2.png", alt="")
+                  img(src="img/product2.png" srcset="img/product2@2x.png 2x" alt="")
         .main__large
           .main__item.main__item--rating(data-teleport-target="main__item--rating")
           .main__item.main__item--large(data-teleport-target="main__item--banner-play")

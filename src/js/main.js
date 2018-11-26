@@ -81,6 +81,18 @@ $(document).ready(function() {
         Barba.Pjax.goTo(dataHref);
       }
     })
+
+    // .on("click", function(e) {
+    //   if ($(e.target).closest(".header").length == 0) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     $("[js-hamburger]").removeClass("is-active");
+    //     $(".header").removeClass("is-open");
+
+    //     blockScroll();
+    //   }
+    // })
+
     .on("click", 'a[href^="#section"]', function() {
       // section scroll
       var el = $(this).attr("href");
@@ -171,7 +183,7 @@ $(document).ready(function() {
 
   function closeMobileMenu() {
     $("[js-hamburger]").removeClass("is-active");
-    $(".mobile-navi").removeClass("is-active");
+    $(".header").removeClass("is-open");
 
     blockScroll();
   }
@@ -284,24 +296,25 @@ $(document).ready(function() {
 
     new Swiper("[js-main-slider]", {
       pagination: {
-        el: ".swiper-pagination"
-      },
-      breakpoints: {
-        992: {
-          wrapperClass: "swiper-wrapper",
-          slideClass: "swiper-slide",
-          direction: "horizontal",
-          loop: false,
-          watchOverflow: true,
-          setWrapperSize: false,
-          spaceBetween: 0,
-          slidesPerView: "auto",
-          normalizeSlideIndex: true,
-          grabCursor: true,
-          freeMode: true,
-          pagination: false
-        }
+        el: ".swiper-pagination2",
+        clickable: true
       }
+      // breakpoints: {
+      //   992: {
+      //     wrapperClass: "swiper-wrapper",
+      //     slideClass: "swiper-slide",
+      //     direction: "horizontal",
+      //     loop: false,
+      //     watchOverflow: true,
+      //     setWrapperSize: false,
+      //     spaceBetween: 0,
+      //     slidesPerView: "auto",
+      //     normalizeSlideIndex: true,
+      //     grabCursor: true,
+      //     freeMode: true,
+      //     pagination: false
+      //   }
+      // }
     });
   }
 
