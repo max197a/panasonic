@@ -74,6 +74,7 @@
     line-height: 1
     position: relative
     transition: background .25s $ease
+    overflow: hidden
     img
       width: 100%
       height: auto
@@ -115,6 +116,15 @@
       &:hover
         .main__play
           background: transparent
+      &.is-active
+        .main__image-banner
+          opacity: 0
+        .main__video
+          opacity: 1
+        .main__play
+          opacity: 0
+        .main__item-bottom
+          opacity: 0
     &--banner
       .main__image-banner
         opacity: 0.85
@@ -152,6 +162,8 @@
     margin-top: auto
     display: flex
     align-items: flex-end
+    position: relative
+    z-index: 10
   &__rank
     display: inline-block
     padding: 7px 15px 6px
@@ -219,6 +231,46 @@
     img
       height: 100%
       width: 100%
+  &__video
+    position: absolute
+    z-index: 5
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    transition: opacity .25s $ease
+    opacity: 0
+    iframe
+      height: 100%
+      width: 100%
+
+  &__sale-info
+    margin-top: auto
+    position: relative
+    z-index: 3
+    display: flex
+    justify-content: flex-end
+    p
+      font-family: $baseFont
+      color: #2972bc
+      font-size: 60px
+      line-height: 1
+      font-weight: 500
+      margin: 0
+      text-align: center
+      span
+        font-size: 11px
+        color: #fff
+      sub
+        font-size: 30px
+      &.bottom
+        margin-top: 10px
+        font-size: 11px
+  &__sale-item
+    margin: 0 10px
+    text-align: center
+
+    
 
   &__play
     position: absolute
@@ -491,8 +543,27 @@
       right: 0
       display: flex
       justify-content: flex-end
-      // img
-      //   width: auto
+      height: auto
+      overflow: hidden
+      img
+        width: 100%
+        // height: auto
+        // max-height: 100%
+    &__sale-info
+      margin-top: 0
+      p
+        font-size: 50px
+        span
+          font-size: 10px
+          color: #fff
+        sub
+          font-size: 24px
+        &.bottom
+          margin-top: 10px
+          font-size: 10px
+    &__sale-item
+      margin: 0 10px
+      text-align: center
     &__item-container
       &--form
         flex: 0 1 100%

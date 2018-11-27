@@ -73,6 +73,7 @@ $(document).ready(function() {
     .on("click", '[href="#"]', function(e) {
       e.preventDefault();
     })
+
     .on("click", "[js-link]", function(e) {
       var dataHref = $(this).data("href");
       if (dataHref && dataHref !== "#") {
@@ -82,16 +83,28 @@ $(document).ready(function() {
       }
     })
 
-    // .on("click", function(e) {
-    //   if ($(e.target).closest(".header").length == 0) {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     $("[js-hamburger]").removeClass("is-active");
-    //     $(".header").removeClass("is-open");
+    .on("click", "[js-open-video]", function() {
+      var $video = $("[js-youtube-video]"),
+        src = $video.attr("src");
+      $(this).addClass("is-active");
+      $video.attr("src", src + "&autoplay=1");
+    })
 
-    //     blockScroll();
-    //   }
-    // })
+    .on("click", function(e) {
+      if ($(e.target).closest(".header").length == 0) {
+        // e.preventDefault();
+        // e.stopPropagation();
+        $("[js-hamburger]").removeClass("is-active");
+        $(".header").removeClass("is-open");
+        // $("body").removeClass("body-lock");
+        // $('.page__content').css('margin-top', '0' );
+      }
+    });
+
+  $(".main__form")
+    .submit(function(e) {
+      e.preventDefault();
+    })
 
     .on("click", 'a[href^="#section"]', function() {
       // section scroll
@@ -421,6 +434,16 @@ $(document).ready(function() {
       image: {
         tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
       }
+    });
+
+    $("[js-popup-video]").magnificPopup({
+      disableOn: 700,
+      type: "iframe",
+      mainClass: "mfp-fade",
+      removalDelay: 160,
+      preloader: false,
+
+      fixedContentPos: false
     });
   }
 
